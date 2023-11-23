@@ -1,7 +1,28 @@
-.container {
+body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  max-width: 220px;
+}
+
+.display {
+  border: 1px solid black;
+  width: auto;
+  height: 60px;
+}
+
+.utils {
+  display: flex;
+  align-self: flex-end;
+}
+
+.container {
+  display: flex;
 }
 
 .block {
@@ -14,5 +35,5 @@
 .numbers {
   display: flex;
   flex-wrap: wrap;
-  max-width: 164px;
+  max-width: 156px;
 }
