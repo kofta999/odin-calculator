@@ -1,6 +1,7 @@
 const numbers = document.querySelectorAll(".number");
 const operations = document.querySelectorAll(".operation");
 const display = document.querySelector("#display");
+const clear = document.querySelector("#clear");
 
 let [num1, operand, num2] = [null, null, null];
 
@@ -27,6 +28,8 @@ operations.forEach((operation) => {
   });
 });
 
+clear.addEventListener("click", clearAll);
+
 function cleanUpInputs(ans) {
   num1 = ans;
   num2 = null;
@@ -37,8 +40,11 @@ function displayValue(val) {
   display.textContent = val;
 }
 
-function clear() {
-  [num1, operand, num2] = [null, null, null];
+function clearAll() {
+  displayValue(null)
+  num1 = null;
+  num2 = null;
+  operand = null
 }
 
 function operate(num1, operand, num2) {
