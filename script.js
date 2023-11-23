@@ -1,12 +1,13 @@
 const numbers = document.querySelectorAll(".number");
 const operations = document.querySelectorAll(".operation");
+const display = document.querySelector("#display");
 
 let [num1, operand, num2] = [null, null, null];
 
 numbers.forEach((number) => {
   number.addEventListener("click", (e) => {
     const num = parseInt(e.target.textContent);
-    console.log(num);
+    displayValue(num);
     if (!num2 && num1 && operand) num2 = num;
     else num1 = num;
   });
@@ -15,11 +16,11 @@ numbers.forEach((number) => {
 operations.forEach((operation) => {
   operation.addEventListener("click", (e) => {
     const op = e.target.textContent;
-    console.log(op);
+    displayValue(op);
     if (num1 && operand && num2) {
       let ans = operate(num1, operand, num2);
       cleanUpInputs(ans);
-      console.log(ans);
+      displayValue(ans);
     } else {
       operand = op;
     }
@@ -30,6 +31,14 @@ function cleanUpInputs(ans) {
   num1 = ans;
   num2 = null;
   operand = null;
+}
+
+function displayValue(val) {
+  display.textContent = val;
+}
+
+function clear() {
+  [num1, operand, num2] = [null, null, null];
 }
 
 function operate(num1, operand, num2) {

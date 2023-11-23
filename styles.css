@@ -10,7 +10,7 @@ body {
   max-width: 220px;
 }
 
-.display {
+#display {
   border: 1px solid black;
   width: auto;
   height: 60px;
