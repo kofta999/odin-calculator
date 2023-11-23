@@ -1,5 +1,6 @@
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -14,11 +15,6 @@ body {
   border: 1px solid black;
   width: auto;
   height: 60px;
-}
-
-.utils {
-  display: flex;
-  align-self: flex-end;
 }
 
 .container {
