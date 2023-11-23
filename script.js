@@ -1,16 +1,36 @@
 const numbers = document.querySelectorAll(".number");
 const operations = document.querySelectorAll(".operation");
 
-let num1, operand, num2;
+let [num1, operand, num2] = [null, null, null];
 
 numbers.forEach((number) => {
   number.addEventListener("click", (e) => {
-    let num = parseInt(e.target.textContent);
+    const num = parseInt(e.target.textContent);
     console.log(num);
     if (!num2 && num1 && operand) num2 = num;
     else num1 = num;
   });
 });
+
+operations.forEach((operation) => {
+  operation.addEventListener("click", (e) => {
+    const op = e.target.textContent;
+    console.log(op);
+    if (num1 && operand && num2) {
+      let ans = operate(num1, operand, num2);
+      cleanUpInputs(ans);
+      console.log(ans);
+    } else {
+      operand = op;
+    }
+  });
+});
+
+function cleanUpInputs(ans) {
+  num1 = ans;
+  num2 = null;
+  operand = null;
+}
 
 function operate(num1, operand, num2) {
   switch (operand) {
