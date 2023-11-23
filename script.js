@@ -3,14 +3,18 @@ const operations = document.querySelectorAll(".operation");
 const display = document.querySelector("#display");
 const clear = document.querySelector("#clear");
 
-let [num1, operand, num2] = [null, null, null];
+let [num1, operand, num2] = ["", "", ""];
 
 numbers.forEach((number) => {
   number.addEventListener("click", (e) => {
-    const num = parseInt(e.target.textContent);
-    displayValue(num);
-    if (!num2 && num1 && operand) num2 = num;
-    else num1 = num;
+    const num = e.target.textContent;
+    if (!num1 || (num1 && !operand)) {
+      num1 += num;
+      displayValue(num1);
+    } else if (num1 && operand) {
+      num2 += num;
+      displayValue(num2);
+    }
   });
 });
 
@@ -32,8 +36,8 @@ clear.addEventListener("click", clearAll);
 
 function cleanUpInputs(ans) {
   num1 = ans;
-  num2 = null;
-  operand = null;
+  num2 = "";
+  operand = "";
 }
 
 function displayValue(val) {
@@ -41,13 +45,16 @@ function displayValue(val) {
 }
 
 function clearAll() {
-  displayValue(null)
-  num1 = null;
-  num2 = null;
-  operand = null
+  displayValue("");
+  num1 = "";
+  num2 = "";
+  operand = "";
 }
 
 function operate(num1, operand, num2) {
+  num1 = parseInt(num1);
+  num2 = parseInt(num2);
+  
   switch (operand) {
     case "+":
       return add(num1, num2);
