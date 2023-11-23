@@ -32,6 +32,10 @@ body {
   text-align: center;
 }
 
+#zero {
+  flex-grow: 2;
+}
+
 .numbers {
   display: flex;
   flex-wrap: wrap;
