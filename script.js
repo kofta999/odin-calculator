@@ -4,12 +4,16 @@ const equals = document.querySelector("#equals");
 const display = document.querySelector("#display");
 const clear = document.querySelector("#clear");
 
-let [num1, operand, num2] = ["", "", ""];
+let [num1, operand, num2, calculated] = ["", "", "", false];
 
 numbers.forEach((number) => {
   number.addEventListener("click", (e) => {
     const num = e.target.textContent;
-    if (!num1 || (num1 && !operand)) {
+    if (calculated) {
+      num1 = num;
+      calculated = false;
+      displayValue(num1);
+    } else if (!num1 || (num1 && !operand)) {
       num1 += num;
       displayValue(num1);
     } else if (num1 && operand) {
@@ -29,6 +33,7 @@ operations.forEach((operation) => {
       displayValue(ans);
     } else {
       operand = op;
+      calculated = false;
     }
   });
 });
@@ -36,6 +41,7 @@ operations.forEach((operation) => {
 equals.addEventListener("click", (e) => {
   if (num1 && operand && num2) {
     let ans = operate(num1, operand, num2);
+    calculated = true;
     cleanUpInputs(ans);
     displayValue(ans);
   }
