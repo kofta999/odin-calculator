@@ -24,8 +24,9 @@ body {
 .block {
   width: 50px;
   height: 50px;
-  border: 1px solid black;
+  /* border: 1px solid #347474; */
   text-align: center;
+  background-color: #ff7e67;
 }
 
 #zero {
@@ -36,4 +37,10 @@ body {
   display: flex;
   flex-wrap: wrap;
   max-width: 156px;
+  gap: 3px;
+}
+
+.number,
+#decimal {
+  background-color: #00ADB5;
 }
