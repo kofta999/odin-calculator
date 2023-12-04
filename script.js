@@ -25,7 +25,9 @@ numbers.forEach((number) => {
 
 operations.forEach((operation) => {
   operation.addEventListener("click", (e) => {
-    const op = e.target.textContent;
+    const target = e.target.tagName === 'I' ? e.target.parentNode : e.target;
+    const op = target.dataset.operation;
+    console.log(target.dataset);
     displayValue(op);
     if (num1 && operand && num2) {
       let ans = operate(num1, operand, num2);

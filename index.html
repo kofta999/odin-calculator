@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <script src="./script.js" defer></script>
     <title>Calculator</title>
   </head>
@@ -13,7 +17,7 @@
       <div class="container">
         <div class="main-buttons">
           <div class="utils">
-            <div class="block util" id="clear">Clear</div>
+            <div class="block util" id="clear">AC</div>
           </div>
           <div class="numbers">
             <div class="block number" id="1">1</div>
@@ -30,11 +34,21 @@
           </div>
         </div>
         <div class="operations">
-          <div class="block operation" id="division">/</div>
-          <div class="block operation" id="multiply">*</div>
-          <div class="block operation" id="subtract">-</div>
-          <div class="block operation" id="add">+</div>
-          <div class="block" id="equals">=</div>
+          <div data-operation="/" class="block operation" id="division">
+            <i class="fas fa-divide"></i>
+          </div>
+          <div data-operation="*" class="block operation" id="multiply">
+            <i class="fas fa-times"></i>
+          </div>
+          <div data-operation="-" class="block operation" id="subtract">
+            <i class="fas fa-minus"></i>
+          </div>
+          <div data-operation="+" class="block operation" id="add">
+            <i class="fas fa-plus"></i>
+          </div>
+          <div data-operation="=" class="block operation" id="equals">
+            <i class="fas fa-equals"></i>
+          </div>
         </div>
       </div>
     </div>

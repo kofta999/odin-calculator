@@ -8,13 +8,25 @@ body {
 .calculator {
   display: flex;
   flex-direction: column;
-  max-width: 220px;
+  background-color: #222831;
+  padding: 5px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.operations,
+.numbers,
+.utils,
+#display {
+  margin: 5px;
+  gap: 5px;
 }
 
 #display {
-  border: 1px solid black;
-  width: auto;
-  height: 60px;
+  border: 1px solid #222831;
+  background-color: #bebcbc;
+  height: 120px;
+  font-size: 32px;
+  text-align: left;
 }
 
 .container {
@@ -22,18 +34,50 @@ body {
 }
 
 .block {
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  color: #1b1a17;
+  border-radius: 2px;
+  user-select: none;
+  font-weight: 900;
+  font-size: 28px;
+}
+
+.block:hover {
+  filter: brightness(110%);
+}
+
+.block:active {
+  filter: brightness(120%);
 }
 
 #zero {
   flex-grow: 2;
 }
 
+.operations {
+  display: flex;
+  flex-direction: column;
+}
+
 .numbers {
   display: flex;
   flex-wrap: wrap;
-  max-width: 156px;
+  max-width: 310px;
+}
+
+.util {
+  background-color: #2666cf;
+}
+
+.operation {
+  background-color: #ff7e67;
+}
+
+.number,
+#decimal {
+  background-color: #1a9b9e;
 }
