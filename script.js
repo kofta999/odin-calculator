@@ -25,17 +25,25 @@ numbers.forEach((number) => {
 
 operations.forEach((operation) => {
   operation.addEventListener("click", (e) => {
-    const target = e.target.tagName === 'I' ? e.target.parentNode : e.target;
+    if (e.target.id === "equals" || e.target.className === "fas fa-equals") {
+      return;
+    }
+    const target = e.target.tagName === "I" ? e.target.parentNode : e.target;
     const op = target.dataset.operation;
-    console.log(target.dataset);
-    displayValue(op);
-    if (num1 && operand && num2) {
-      let ans = operate(num1, operand, num2);
-      cleanUpInputs(ans);
-      displayValue(ans);
+    if (!target.classList.contains("selected")) {
+      removeSelection();
+      target.classList.add("selected");
+      if (num1 && operand && num2) {
+        let ans = operate(num1, operand, num2);
+        cleanUpInputs(ans);
+        displayValue(ans);
+        operand = op;
+      } else {
+        operand = op;
+        calculated = false;
+      }
     } else {
-      operand = op;
-      calculated = false;
+      target.classList.remove("selected");
     }
   });
 });
@@ -45,6 +53,7 @@ equals.addEventListener("click", (e) => {
     let ans = operate(num1, operand, num2);
     calculated = true;
     cleanUpInputs(ans);
+    removeSelection();
     displayValue(ans);
   }
 });
@@ -62,6 +71,7 @@ function displayValue(val) {
 }
 
 function clearAll() {
+  removeSelection();
   displayValue("");
   num1 = "";
   num2 = "";
@@ -82,6 +92,10 @@ function operate(num1, operand, num2) {
     case "/":
       return divide(num1, num2);
   }
+}
+
+function removeSelection() {
+  operations.forEach((op) => op.classList.remove("selected"));
 }
 
 /**
